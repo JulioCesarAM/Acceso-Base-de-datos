@@ -8,11 +8,12 @@ create table if not EXISTS ligas(
 drop table equipos
 create table if not EXISTS equipos (
     cod_equipo int AUTO_INCREMENT,
-    nom_equipo varchar (40),
+    nom_equipo varchar (40), 
     cod_liga char(5) DEFAULT ('pdn'),
     localidad varchar(60),
     internacional tinyint DEFAULT 0,
-    index pk_cod_equipo (cod_equipo),
+    PRIMARY KEY (cod_equipo),
+    /* index pk_cod_equipo (cod_equipo),  no es necesario o si yo que se*/
     FOREIGN key fk_codligaLigas (cod_liga) REFERENCES ligas(codLiga)
 );
 create table if NOT EXISTS futbolistas (

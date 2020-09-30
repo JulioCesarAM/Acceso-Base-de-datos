@@ -24,7 +24,8 @@ DELIMITER //
             ligas
         ON  
             equipos.cod_liga=ligas.codLiga
-        where contratos.dni_nie=dni_in;
+        where contratos.dni_nie=dni_in
+        ORDER BY contratos.fecha_inicio;
         end //
 DELIMITER ;
 /*Crear un procedimiento almacenado que inserte un equipo, de modo que se le pase como parámetros
@@ -39,7 +40,7 @@ DELIMITER //
     create procedure bdfutbol.insertar_equipo (in _nomEquipo varchar(40), in _codLiga char(5),
         in _localidad varchar(60),in _internacional tinyint, out resultadoL TINYINT(1),out resultadoI TINYINT(1)    )
         BEGIN
-            set @contadorInicial = (select FOUND_ROWS() FROM equipos);
+            set contadorInicial = (select FOUND_ROWS() FROM equipos);
             set resultadoL=(SELECT if (EXISTS (select codLiga from ligas where codLiga=_codLiga),1,0));
             SET resultadoI=0;
             
@@ -93,7 +94,7 @@ create FUNCTION  bdfutbol.dni_meses_en_equipo (_dni char(9))
             RETURN  valorRetornado;
         END //
 DELIMITER ; 
-
+   
 
    
 

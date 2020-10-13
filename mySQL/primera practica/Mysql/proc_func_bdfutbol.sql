@@ -40,18 +40,23 @@ DELIMITER //
     create procedure bdfutbol.insertar_equipo (in _nomEquipo varchar(40), in _codLiga char(5),
         in _localidad varchar(60),in _internacional tinyint, out resultadoL TINYINT(1),out resultadoI TINYINT(1)    )
         BEGIN
-            set contadorInicial = (select FOUND_ROWS() FROM equipos);
+           set @contadorInicial = (select COUNT(*) FROM equipos);
             set resultadoL=(SELECT if (EXISTS (select codLiga from ligas where codLiga=_codLiga),1,0));
-            SET resultadoI=0;
+
             
-            if resultadoL=1 THEN 
+            if resultadoL>=1 THEN 
             	BEGIN
-            		INSERT INTO equipos values (null,_nomEquipo,_codliga,_localidad,_internacional);
-            		if @contadorInicial!=(select FOUND_ROWS() from equipos) then set resultadoI=1;
-            		END IF;
+            	        INSERT INTO bdfutbol.equipos values (null,_nomEquipo,_codliga,_localidad,_internacional);
+                        if @contadorInicial<(select COUNT(*) from equipos) 
+                                then 
+                                        set resultadoI=1;
+                        else 
+                                        set resultadoI=0;
+                        end if;
+     		
             	END;
-       		END IF;
-         END //
+       	    END IF;
+        END //
 DELIMITER ;
 
 /*  Crear un procedimiento almacenado que indicándole un equipo, precio anual y un precio recisión,

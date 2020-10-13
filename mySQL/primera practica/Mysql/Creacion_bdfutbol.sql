@@ -11,7 +11,7 @@ create table if not EXISTS equipos (
     nom_equipo varchar (40), 
     cod_liga char(5) DEFAULT ('pdn'),
     localidad varchar(60),
-    internacional tinyint DEFAULT 0,
+    internacional tinyint(1) DEFAULT 0,
     PRIMARY KEY (cod_equipo),
     /* index pk_cod_equipo (cod_equipo),  no es necesario o si yo que se*/
     FOREIGN key fk_codligaLigas (cod_liga) REFERENCES ligas(codLiga)

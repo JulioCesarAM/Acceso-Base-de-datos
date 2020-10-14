@@ -14,7 +14,7 @@ DELIMITER ;
 DELIMITER //
 
 CREATE  TRIGGER trig_contratos_precio_anual 
-    AFTER 
+    BEFORE 
     INSERT on contratos
     FOR EACH ROW 
     BEGIN
@@ -32,7 +32,7 @@ DELIMITER ;
 DELIMITER //
 
 CREATE  TRIGGER trig_contratos_precio_anual_update 
-    AFTER 
+    BEFORE 
     UPDATE  on contratos
     FOR EACH ROW 
     BEGIN
@@ -50,8 +50,8 @@ DELIMITER ;
 posterior a la fecha fin que las intercambie. 
 */
 DELIMITER //
-create TRIGGER trig_fechaInicio_fechafin
-    AFTER 
+create TRIGGER trig_fechaInicio_fechafin /*cambiar mal  por before sin el update*/
+    BEFORE
     INSERT  on contratos
     FOR EACH ROW
     BEGIN  
@@ -61,15 +61,16 @@ create TRIGGER trig_fechaInicio_fechafin
             declare fecha_final date;
             set fecha_comienzo=new.fecha_fin;
             set fecha_final=new.fecha_inicio; 
-            UPDATE new set new.fecha_inicio=fecha_comienzo,new.fecha_fin=fecha_final;
+            SET new.fecha_fin=fecha_final;
+            set new.fecha_inicio=fecha_comienzo;
          END 
         END IF;
     END //
 DELIMITER ;
 
 DELIMITER //
-create TRIGGER trig_fechaInicio_fechafin_update
-    AFTER 
+create TRIGGER trig_fechaInicio_fechafin_update /*cambiar  mal tambien*/
+    BEFORE  
     UPDATE on contratos
     FOR EACH ROW
     BEGIN  

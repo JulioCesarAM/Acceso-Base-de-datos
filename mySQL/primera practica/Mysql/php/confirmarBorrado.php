@@ -70,7 +70,7 @@
             <tr>
                 <td colspan="3"> 
                     <a href="index.php">
-                    <input type="submit" name="t_volver" id="t_volver" value="volver">
+                    <input type="button" name="t_volver" id="t_volver" value="volver">
                     </a>
                 </td>
             </tr>

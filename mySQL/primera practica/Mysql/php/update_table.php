@@ -4,7 +4,12 @@
     $n_nom_equipo=$_POST["nom_equipo"];
     $n_cod_liga=$_POST["cod_liga"];
     $n_localidad=$_POST["localidad"];
-    $n_internacional=$_POST["internacional"];
+    if (isset($_POST["internacional"])){
+        $n_internacional=1;
+    }
+    else{
+        $n_internacional=0;
+    }
     
     $consulta="update equipos 
     set nom_equipo= :nombre_equipo, 

@@ -4,7 +4,13 @@
     $nom_equipo=$_POST["nom_equipo"];
     $cod_liga=$_POST["cod_liga"];
     $localidad=$_POST["localidad"];
-    $internacional=(int)$_POST["internacional"];
+    //$internacional=(int)$_POST["internacional"];
+    if (isset($_POST["internacional"])){
+        $internacional=1;
+    }
+    else{
+        $internacional=0;
+    }
     //$comando="insert INTO equipos (cod_equipo,nom_equipo,cod_liga,localidad,internacional)
     //values (:null,:nom_equipo,:cod_liga,:localidad,:internacional );";
     //$insercion=$pdo->prepare($comando);

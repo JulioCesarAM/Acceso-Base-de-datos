@@ -73,7 +73,7 @@
                     <td>internacional</td>
                     <td>
                         <label for="internacional"></label>
-                        <input type="number" name="internacional" id="internacional" min="0" max="1" >
+                        <input type="checkbox" name="internacional" id="internacional"  >
                      
                     </td>
                 </tr> 

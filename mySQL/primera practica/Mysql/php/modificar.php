@@ -85,10 +85,10 @@
                 </tr>
                 <tr>
                     <td>internacional</td>
-                    <td><?php echo $internacional ?></td>
+                    <td><?php echo $comprobar=$internacional==1?"si":"no"?></td>
                     <td>
                         <label for="localidad"></label>
-                        <input type="number" name="internacional" id="internacional" min="0" max="1">
+                        <input type="checkbox" name="internacional" id="internacional" >
                     </td>
                 </tr> 
                 <tr>

@@ -68,7 +68,7 @@
                     <th><?php echo $equipo->nom_equipo?></th>
                     <th><?php echo $equipo->cod_liga?></th>
                     <th><?php echo $equipo->localidad?></th>
-                    <th><?php echo $equipo->internacional?></th>
+                    <th><?php echo $comprobar=$equipo->internacional==1?"si":"no"?></th>
                     <th><?php echo $equipo->nomLiga?></th>
                     <th>
                         <a href="confirmarBorrado.php?cod_equipo=<?php echo $equipo->cod_equipo ?> &

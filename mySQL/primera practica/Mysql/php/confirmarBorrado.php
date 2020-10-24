@@ -62,7 +62,7 @@
             </tr>
             <tr>
                 <td>internacional</td>
-                <td><?php echo $internacional ?></td>
+                <td><?php echo $comprobar=$internacional==1?"si":"no"?></td>
             </tr> 
             <tr>
                 <td colspan="3"><input type="submit" name="t_borrar" id="t_borrar" value="borrar"></td>
